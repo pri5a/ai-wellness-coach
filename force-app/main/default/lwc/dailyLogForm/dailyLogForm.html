@@ -1,0 +1,73 @@
+<template>
+    <lightning-card title="Daily Log New">
+        <div class="slds-p-around_medium">
+            <lightning-input
+                label="Date"
+                type="date"
+                data-field="Date__c"
+                onchange={handleChange}>
+            </lightning-input>
+
+            <lightning-input
+                label="Sleep Hours"
+                type="number"
+                data-field="Sleep_Hours__c"
+                onchange={handleChange}>
+            </lightning-input>
+
+            <lightning-input
+                label="Calories Burned"
+                type="number"
+                data-field="Calories_Burned__c"
+                onchange={handleChange}>
+            </lightning-input>
+
+            <lightning-textarea
+                label="Workout Details"
+                data-field="Workout__c"
+                onchange={handleChange}>
+            </lightning-textarea>
+
+            <lightning-input
+                label="Water Intake (ml)"
+                type="number"
+                data-field="Water_Intake__c"
+                onchange={handleChange}>
+            </lightning-input>
+
+            <lightning-input
+                label="HRV"
+                type="number"
+                data-field="HRV__c"
+                onchange={handleChange}>
+            </lightning-input>
+
+            <lightning-input
+                label="RHR"
+                type="number"
+                data-field="RHR__c"
+                onchange={handleChange}>
+            </lightning-input>
+
+            <lightning-combobox
+                label="Mood"
+                data-field="Mood__c"
+                options={moodOptions}
+                onchange={handleChange}>
+            </lightning-combobox>
+
+            <lightning-textarea
+                label="Notes"
+                data-field="Notes__c"
+                onchange={handleChange}>
+            </lightning-textarea>
+
+            <lightning-button
+                class="slds-m-top_small"
+                variant="brand"
+                label="Save Log"
+                onclick={handleSave}>
+            </lightning-button>
+        </div>
+    </lightning-card>
+</template>
