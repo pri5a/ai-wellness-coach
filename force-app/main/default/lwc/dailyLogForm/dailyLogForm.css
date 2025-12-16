@@ -1,0 +1,16 @@
+.form-container{
+    max-width: 600px;
+    margin: auto;
+}
+
+.section-title{
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+    color: #444;
+}
+
+.button-row{
+    display: flex;
+    justify-content: flex-start;
+}

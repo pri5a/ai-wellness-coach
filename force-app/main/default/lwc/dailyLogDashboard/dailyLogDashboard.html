@@ -1,0 +1,12 @@
+<template>
+    <lightning-card title="Daily Wellness Dashboard">
+        <c-daily-log-form
+            onlogsaved={handleLogSaved}>
+        </c-daily-log-form>
+
+        <c-ai-feedback-panel
+            daily-log-id={selectedLogId}>
+        </c-ai-feedback-panel>
+        
+    </lightning-card>
+</template>

@@ -1,12 +1,22 @@
 <template>
-    <lightning-card title="Daily Log New">
-        <div class="slds-p-around_medium">
+    <lightning-card title="Daily Wellness Log">
+        <div class="slds-p-around_medium form-container">
+            <!-- Section 1: Date -->
             <lightning-input
                 label="Date"
                 type="date"
                 data-field="Date__c"
+                required
                 onchange={handleChange}>
             </lightning-input>
+
+            <!-- Section 2: Body Metrics -->
+            <div class="section-title">Body Metrics</div>
+            <lightning-textarea
+                label="Meals (What you ate today?)"
+                data-field="Meals__c"
+                onchange={handleChange}>
+            </lightning-textarea>
 
             <lightning-input
                 label="Sleep Hours"
@@ -22,12 +32,6 @@
                 onchange={handleChange}>
             </lightning-input>
 
-            <lightning-textarea
-                label="Workout Details"
-                data-field="Workout__c"
-                onchange={handleChange}>
-            </lightning-textarea>
-
             <lightning-input
                 label="Water Intake (ml)"
                 type="number"
@@ -36,23 +40,38 @@
             </lightning-input>
 
             <lightning-input
-                label="HRV"
+                label="HRV (ms)"
                 type="number"
                 data-field="HRV__c"
                 onchange={handleChange}>
             </lightning-input>
 
             <lightning-input
-                label="RHR"
+                label="RHR (bpm)"
                 type="number"
                 data-field="RHR__c"
                 onchange={handleChange}>
             </lightning-input>
 
+            <!-- Section 3: Lifestyle -->
+            <div class="section-title">Lifestyle and notes</div>
+            <lightning-textarea
+                label="Workout Details"
+                data-field="Workout__c"
+                onchange={handleChange}>
+            </lightning-textarea>
+
+            <lightning-input
+                label="Workout Minutes"
+                type="number"
+                data-field="Workout_Minutes__c"
+                onchange={handleChange}>
+            </lightning-input>
+
             <lightning-combobox
                 label="Mood"
-                data-field="Mood__c"
                 options={moodOptions}
+                data-field="Mood__c"
                 onchange={handleChange}>
             </lightning-combobox>
 
@@ -62,12 +81,29 @@
                 onchange={handleChange}>
             </lightning-textarea>
 
-            <lightning-button
-                class="slds-m-top_small"
-                variant="brand"
-                label="Save Log"
-                onclick={handleSave}>
-            </lightning-button>
+            <!-- Buttons -->
+             <div class="slds-m-top_medium button-row">
+                <lightning-button
+                    variant="brand"
+                    label="Save Log"
+                    onclick={handleSave}
+                    class="slds-m-right_small">
+                </lightning-button>
+
+                <lightning-button
+                    variant="neutral"
+                    label="Reset"
+                    onclick={resetForm}>
+                </lightning-button>
+            </div>
+
+            <!-- Spinner -->
+             <template if:true={isLoading}>
+                <lightning-spinner
+                    alternative-text="Saving..."
+                    size="small">
+                </lightning-spinner>
+             </template>
         </div>
     </lightning-card>
 </template>

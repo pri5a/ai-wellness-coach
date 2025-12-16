@@ -7,8 +7,8 @@ public with sharing class DailyLogController {
 
     @AuraEnabled
     public static SaveResult saveDailyLog(String jsonData) {
+        
         SaveResult result = new SaveResult();
-
         try {
             if(jsonData == null) {
                 result.error = 'Missing input data';
@@ -33,8 +33,14 @@ public with sharing class DailyLogController {
             if(data.containsKey('Calories_Burned__c'))
                 rec.Calories_Burned__c = toDecimal(data.get('Calories_Burned__c'));
 
+            if(data.containsKey('Meals__c'))
+                rec.Meals__c = String.valueOf(data.get('Meals__c'));
+
             if(data.containsKey('Workout__c'))
                 rec.Workout__c = String.valueOf(data.get('Workout__c'));
+
+            if(data.containsKey('Workout_Minutes__c'))
+                rec.Workout_Minutes__c = toDecimal(data.get('Workout_Minutes__c'));
 
             if(data.containsKey('Water_Intake__c'))
                 rec.Water_Intake__c = toDecimal(data.get('Water_Intake__c'));
@@ -61,11 +67,12 @@ public with sharing class DailyLogController {
         return result;
     }
 
-    @AuraEnabled
+    @AuraEnabled(cacheable=true)
     public static List<Daily_Log__c> getDailyLogs() {
         return [
             SELECT Id, Date__c, Sleep_Hours__c, Calories_Burned__c, Workout__c,
-                    Water_Intake__c, HRV__c, RHR__c, Mood__c, Notes__c
+                    Water_Intake__c, HRV__c, RHR__c, Mood__c, Notes__c,
+                    Meals__c, Workout_Minutes__c
             FROM Daily_Log__c
             ORDER BY Date__c DESC
         ];

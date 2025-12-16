@@ -1,0 +1,39 @@
+<template>
+    <lightning-card title="Daily Logs">
+        <template if:true={logs}>
+            <table class="slds-table slds-table_bordered slds-m-around_medium">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Sleep</th>
+                        <th>Calories</th>
+                        <th>Workout</th>
+                        <th>Water (ml)</th>
+                        <th>HRV</th>
+                        <th>RHR</th>
+                        <th>Mood</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <template for:each={logs} for:item="log">
+                        <tr key={log.Id}>
+                            <td>{log.Date__c}</td>
+                            <td>{log.Sleep_Hours__c}</td>
+                            <td>{log.Calories_Burned__c}</td>
+                            <td>{log.Workout__c}</td>
+                            <td>{log.Water_Intake__c}</td>
+                            <td>{log.HRV__c}</td>
+                            <td>{log.RHR__c}</td>
+                            <td>{log.Mood__c}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </template>
+
+        <template if:true={error}>
+            <p class="slds-text-color_error slds-m-around_medium">{error}</p>
+        </template>
+    </lightning-card>
+</template>

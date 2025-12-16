@@ -1,0 +1,22 @@
+<template>
+    <lightning-card title="AI Daily Wellness Feedback">
+        <div class="slds-p-around_medium">
+            <lightning-button
+                variant="brand"
+                label="Generate AI Feedback"
+                onclick={handleGenerate}
+                class="slds-m-bottom_small">
+            </lightning-button>
+
+            <template if:true={feedback}>
+                <div class="slds-box slds-theme_default slds-m-top_small">
+                    <lightning-formatted-text value={feedback}></lightning-formatted-text>
+                </div>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
