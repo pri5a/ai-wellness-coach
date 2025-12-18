@@ -95,4 +95,86 @@ public with sharing class AIEngine {
         
         fb.add('');
     }
+
+    // This code make an API call to OpenAI API to generate feedback.
+    // Commenting this code because of OpenAI API payment issues.
+    // @AuraEnabled
+    // public static String generateDailyFeedback(Id dailyLogId) {
+
+    //     if (dailyLogId == null) {
+    //         throw new AuraHandledException('Daily Log Id is required');
+    //     }
+
+    //     Daily_Log__c log = [
+    //         SELECT Sleep_Hours__c, Water_Intake__c, HRV__c, RHR__c,
+    //                Calories_Burned__c, Mood__c, Workout__c
+    //         FROM Daily_Log__c
+    //         WHERE Id = :dailyLogId
+    //         LIMIT 1
+    //     ];
+
+    //     HttpRequest req = new HttpRequest();
+    //     req.setMethod('POST');
+
+    //     // IMPORTANT: Named Credential ONLY (no full URL)
+    //     req.setEndpoint('callout:OpenAI/v1/chat/completions');
+
+    //     req.setHeader('Content-Type', 'application/json');
+
+    //     Map<String, Object> body = new Map<String, Object>();
+    //     body.put('model', 'gpt-3.5-turbo');
+
+    //     List<Object> messages = new List<Object>();
+
+    //     messages.add(new Map<String, Object>{
+    //         'role' => 'system',
+    //         'content' => 'You are a wellness coach providing concise feedback.'
+    //     });
+
+    //     messages.add(new Map<String, Object>{
+    //         'role' => 'user',
+    //         'content' =>
+    //             'Sleep: ' + log.Sleep_Hours__c +
+    //             ', Water: ' + log.Water_Intake__c +
+    //             ', HRV: ' + log.HRV__c +
+    //             ', RHR: ' + log.RHR__c +
+    //             ', Calories: ' + log.Calories_Burned__c +
+    //             ', Mood: ' + log.Mood__c +
+    //             ', Workout: ' + log.Workout__c
+    //     });
+
+    //     body.put('messages', messages);
+    //     body.put('temperature', 0.7);
+
+    //     req.setBody(JSON.serialize(body));
+
+    //     Http http = new Http();
+    //     HttpResponse res;
+
+    //     try {
+    //         res = http.send(req);
+    //     } catch (Exception e) {
+    //         System.debug('HTTP CALL FAILED: ' + e.getMessage());
+    //         throw new AuraHandledException('HTTP callout failed: ' + e.getMessage());
+    //     }
+
+    //     System.debug('STATUS CODE: ' + res.getStatusCode());
+    //     System.debug('RESPONSE BODY: ' + res.getBody());
+
+    //     if (res.getStatusCode() != 200) {
+    //         throw new AuraHandledException(
+    //             'OpenAI Error ' + res.getStatusCode() + ': ' + res.getBody()
+    //         );
+    //     }
+
+    //     Map<String, Object> responseMap =
+    //         (Map<String, Object>) JSON.deserializeUntyped(res.getBody());
+
+    //     List<Object> choices = (List<Object>) responseMap.get('choices');
+    //     Map<String, Object> message =
+    //         (Map<String, Object>) ((Map<String, Object>) choices[0]).get('message');
+
+    //     return (String) message.get('content');
+    // }
 }
+
