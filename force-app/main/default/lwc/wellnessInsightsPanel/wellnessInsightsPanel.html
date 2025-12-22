@@ -1,0 +1,18 @@
+<template>
+    <lightning-card title="Weekly Wellness Insights">
+        <div class="slds-p-around_medium">
+            <template if:true={insights}>
+                <template for:each={insights} for:item="item">
+                    <div key={item.metric} class="slds-box slds-m-bottom_small">
+                        <p><strong>{item.metric}</strong> - {item.trend}</p>
+                        <p class="slds-m-top_x-small">{item.message}</p>
+                    </div>
+                </template>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

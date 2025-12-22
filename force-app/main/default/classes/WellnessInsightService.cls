@@ -1,5 +1,5 @@
 public with sharing class WellnessInsightService {
-    @AuraEnabled(cacheable=true)
+    @AuraEnabled
     public static List<WellnessInsightDTO> analyzeTrends() {
         List<WellnessTrendDTO> data = WellnessTrendService.getLast7DaysTrends();
 
