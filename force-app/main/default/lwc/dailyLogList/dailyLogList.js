@@ -11,7 +11,7 @@ export default class DailyLogList extends LightningElement {
             this.logs = data;
             this.error = null;
         } else if(error){
-            this.error = error.body.message;
+            this.error = error.body?.message || error.message;
         }
     }
 }

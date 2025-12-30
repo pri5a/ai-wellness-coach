@@ -1,5 +1,6 @@
 <template>
     <lightning-card title="Daily Wellness Dashboard">
+
         <c-daily-log-form
             onlogsaved={handleLogSaved}>
         </c-daily-log-form>
@@ -11,6 +12,8 @@
         <c-wellness-trend-chart></c-wellness-trend-chart>
 
         <c-wellness-insights-panel></c-wellness-insights-panel>
+
+        <c-wellness-ai-summary-panel></c-wellness-ai-summary-panel>
         
     </lightning-card>
 </template>

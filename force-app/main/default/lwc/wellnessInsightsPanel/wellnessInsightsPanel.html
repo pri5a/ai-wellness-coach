@@ -1,6 +1,15 @@
 <template>
     <lightning-card title="Weekly Wellness Insights">
         <div class="slds-p-around_medium">
+
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading insights"></lightning-spinner>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+
             <template if:true={insights}>
                 <template for:each={insights} for:item="item">
                     <div key={item.metric} class="slds-box slds-m-bottom_small">
@@ -10,8 +19,10 @@
                 </template>
             </template>
 
-            <template if:true={error}>
-                <p class="slds-text-color_error">{error}</p>
+            <template if:false={insights.length}>
+                <p class="slds-text-color_weak">
+                    Not enough data yet. Log a few more days.
+                </p>
             </template>
         </div>
     </lightning-card>

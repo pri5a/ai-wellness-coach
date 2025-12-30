@@ -3,8 +3,10 @@ import analyzeTrends from '@salesforce/apex/WellnessInsightService.analyzeTrends
 export default class WellnessInsightsPanel extends LightningElement {
     @track insights = [];
     @track error;
+    @track isLoading = false;
 
     connectedCallback() {
+        this.isLoading = true;
         analyzeTrends()
         .then(result => {
             console.log('Insights:', JSON.stringify(result));
@@ -13,19 +15,9 @@ export default class WellnessInsightsPanel extends LightningElement {
         .catch(err => {
             console.error(err);
             this.error = err.body?.message || err.message;
+        })
+        .finally(() => {
+            this.isLoading = false;
         });
     }
-
-
-    // @wire(analyzeTrends)
-    // wiredInsights({ data, error }){
-    //     if(data){
-    //         console.log('data:',data);
-    //      this.insights = data;
-    //      this.error = undefined;   
-    //     } else if(error){
-    //         this.error = error.body?.message || error.message;
-    //         this.insights = undefined;
-    //     }
-    // }
 }

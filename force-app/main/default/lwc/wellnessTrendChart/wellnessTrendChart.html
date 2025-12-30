@@ -1,10 +1,8 @@
 <template>
     <lightning-card title="7-Day Wellness Trends">
         <div class="slds-p-around_medium">
-            <!-- <template if:true={trendData}> -->
-                <canvas class="chart"></canvas>
-            <!-- </template> -->
-
+            <canvas class="chart"></canvas>
+            
             <template if:true={error}>
                 <p class="slds-text-color_error">{error}</p>
             </template>

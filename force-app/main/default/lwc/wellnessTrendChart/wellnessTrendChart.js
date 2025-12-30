@@ -1,6 +1,6 @@
 import { LightningElement, track } from 'lwc';
 import getLast7DaysTrends from '@salesforce/apex/WellnessTrendService.getLast7DaysTrends';
-import {loadScript} from 'lightning/platformResourceLoader';
+import { loadScript } from 'lightning/platformResourceLoader';
 import chartJs from '@salesforce/resourceUrl/chartjs';
 export default class WellnessTrendChart extends LightningElement {
     @track trendData;

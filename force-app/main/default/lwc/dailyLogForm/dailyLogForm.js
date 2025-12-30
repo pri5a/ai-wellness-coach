@@ -42,7 +42,7 @@ export default class DailyLogForm extends LightningElement {
                     // Clear form
                     this.resetForm();
 
-                    // Notify parent (Day 5)
+                    // Notify parent
                     this.dispatchEvent(new CustomEvent("logsaved", {
                         detail: {recordId: res.recordId }
                     })

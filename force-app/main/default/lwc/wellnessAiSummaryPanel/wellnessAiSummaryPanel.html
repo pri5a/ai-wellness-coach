@@ -1,0 +1,21 @@
+<template>
+    <lightning-card title="AI Weekly Summary">
+        <div class="slds-p-around_medium">
+            <lightning-button
+                variant="brand"
+                label="Generate AI Summary"
+                onclick={handleGenerate}>
+            </lightning-button>
+
+            <template if:true={summary}>
+                <div class="slds-box slds-m--top_medium">
+                    <pre>{summary}</pre>
+                </div>
+            </template>
+
+            <template if:true={error}>
+                <p class="slds-text-color_error">{error}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>
